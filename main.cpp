@@ -22,6 +22,11 @@ void handle_client(int client_socket)
 		return;
 	}
 
+	// 受信したリクエスト内容をログ出力
+	std::cout << "=== Client Request ===" << std::endl;
+	std::cout << buffer << std::endl;
+	std::cout << "======================" << std::endl;
+
 	// HTTPレスポンスボディ
 	std::string body = "<html><body>hello</body></html>";
 
@@ -40,10 +45,15 @@ void handle_client(int client_socket)
 	                       body;
 
 	// レスポンスを送信
-	send(client_socket, response.c_str(), response.size(), 0);
+	int bytes_sent = send(client_socket, response.c_str(), response.size(), 0);
+	if (bytes_sent < 0)
+	{
+		std::cerr << "Error sending data" << std::endl;
+	}
 
 	// クライアントソケットを閉じる
 	close(client_socket);
+	std::cout << "Client connection closed." << std::endl;
 }
 
 int main()
@@ -97,6 +107,10 @@ int main()
 			close(server_socket);
 			return EXIT_FAILURE;
 		}
+
+		// 接続したクライアントの情報をログ出力
+		std::cout << "Connection accepted from " << inet_ntoa(client_addr.sin_addr) << ":"
+		          << ntohs(client_addr.sin_port) << std::endl;
 
 		// クライアントを処理
 		handle_client(client_socket);
