@@ -1,0 +1,60 @@
+# ビルドディレクトリとバイナリ
+/build/
+/bin/
+/obj/
+/out/
+
+# CMake
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
+
+# Visual Studio Code
+.vscode/
+
+# Visual Studio
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+*.suo
+*.user
+*.userosscache
+*.userprefs
+*.local
+*.log
+*.ncb
+*.sdf
+*.opensdf
+*.tlog
+
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+.idea/
+*.hmap
+*.ipa
+*.xcuserstate
+
+# MacOS
+.DS_Store
+
+# Linux
+*.swp
+*.out
+*.a
+*.o
+
+# その他
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+echo_server
